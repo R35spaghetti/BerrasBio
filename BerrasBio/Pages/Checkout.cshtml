@@ -1,9 +1,10 @@
 ﻿@page
-@model BerrasBio.Pages.CartModel
+@model BerrasBio.Pages.CheckoutModel
 @{
+   
 }
 <div>
-    <h4>Var denna film som du ville beställa?</h4>
+    <h4>Slutgiltig beställning</h4>
     <hr />
     <dl class="row-cols-lg-5">
         <dt class="col-lg-2">
@@ -31,19 +32,8 @@
             @Html.DisplayFor(model => model.Movie.Date)
 
         </dd>
+
     </dl>
-   
+    <p>Ticket amount: @Html.DisplayFor(x=>x.BoughtTickets)</p>
+   <p>Total cost: @Html.DisplayFor(x => x.Total)</p>
 </div>
-
-<h5>Antal biljetter</h5>
-
-<form method="post">
- <input type="number" name="number"/>
-<div class=form-group> 
-
-<span asp-validation-for="Tickets.Amount"class="text-danger"/>
-</div>
-    <input type="submit" class="btn btn-primary"/>
-</form>
-
-    <a asp-page="/Index">Return</a>

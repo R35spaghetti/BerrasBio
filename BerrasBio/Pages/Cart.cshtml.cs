@@ -16,18 +16,12 @@ namespace BerrasBio.Pages
         }
         public SelectList TicketOptions { get; set; }
         
-        //[BindProperty]
-        //public Ticket TicketsInCart { get; set; }
+        
         public Movie Movie { get; set; }
         public Ticket Tickets { get; set; }
         public double Total { get; set; }
 
-        //public async Task<IActionResult> OnPost()
-        //{
-        //  //  await DBInput.Add(TicketsInCart);
-        //   await DbContext.SaveChangesAsync();
-        //    return RedirectToPage("Index");
-        //}
+      
         public async Task<IActionResult> OnGetBuyTicketsAsync(int id)
         {
             if (id == null)
@@ -46,9 +40,8 @@ namespace BerrasBio.Pages
         }
             public void OnGet()
         {
+         
 
-
-            //TicketOptions = new SelectList(_context.Ticket, nameof(Ticket.Amount));
         }
 
 
@@ -57,6 +50,7 @@ namespace BerrasBio.Pages
         {
           var  number = Request.Form["number"];
             var currentTickets = _context.Ticket
+                .Where(m => m.Id == id)
                 .Select(x => x.Amount)
                 .First();
            int number2 = int.Parse(number);
@@ -64,10 +58,17 @@ namespace BerrasBio.Pages
             Tickets = await _context.Ticket
               .Include(t => t.Movie).FirstOrDefaultAsync(m => m.Id == id);
             Tickets.Amount = newTicketValue;
+
+        //    var priceOnMovie = _context.Movie
+        //.Select(x => x.Price)
+        //.First();
+        //    Total = priceOnMovie * currentTickets;
+
+
             //Tar siffran från antal tickets
             _context.Attach(Tickets).State = EntityState.Modified;
             await _context.SaveChangesAsync();
-            return RedirectToPage("./Index");
+            return RedirectToPage("./Checkout");
 
         }
     }
