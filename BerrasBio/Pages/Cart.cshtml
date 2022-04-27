@@ -36,6 +36,10 @@
 </div>
 
 <h5>Antal biljetter</h5>
+
+<form method="post">
+ <input type="number" name="number"/>
+<div class=form-group> 
 <select name="number">
         <option value="">1</option>
         <option value="">2</option>
@@ -49,10 +53,10 @@
         <option value="">10</option>
         <option value="">11</option>
         <option value="">12</option>
-
-
 </select>
-
-<select asp-for="Movie.Tickets" asp-items="Model.TicketOptions"></select>
+<span asp-validation-for="Tickets.Amount"class="text-danger"/>
+</div>
+    <input type="submit" class="btn btn-primary"/>
+</form>
 
     <a asp-page="/Index">Return</a>

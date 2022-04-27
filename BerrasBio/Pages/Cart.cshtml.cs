@@ -19,6 +19,7 @@ namespace BerrasBio.Pages
         //[BindProperty]
         //public Ticket TicketsInCart { get; set; }
         public Movie Movie { get; set; }
+        public Ticket Tickets { get; set; }
         public double Total { get; set; }
 
         //public async Task<IActionResult> OnPost()
@@ -45,11 +46,29 @@ namespace BerrasBio.Pages
         }
             public void OnGet()
         {
-            //Tar siffran från antal tickets
-            var number = Request.Form["number"];
 
-            //TODO: ta bort
-            TicketOptions = new SelectList(_context.Ticket, nameof(Ticket.Amount));
+
+            //TicketOptions = new SelectList(_context.Ticket, nameof(Ticket.Amount));
+        }
+
+
+        public async Task<IActionResult> OnPostAsync(int id)
+                
+        {
+          var  number = Request.Form["number"];
+            var currentTickets = _context.Ticket
+                .Select(x => x.Amount)
+                .First();
+           int number2 = int.Parse(number);
+            var newTicketValue = currentTickets - number2;
+            Tickets = await _context.Ticket
+              .Include(t => t.Movie).FirstOrDefaultAsync(m => m.Id == id);
+            Tickets.Amount = newTicketValue;
+            //Tar siffran från antal tickets
+            _context.Attach(Tickets).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+            return RedirectToPage("./Index");
+
         }
     }
 }
