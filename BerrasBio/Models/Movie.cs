@@ -1,12 +1,20 @@
-﻿namespace BerrasBio.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace BerrasBio.Models
 {
     public class Movie
     {
-        public int Id { get; set; }
+         public int Id { get; set; }
+        [Required]
         public string Name { get; set; } = string.Empty;
-       public int Price { get; set; } = 0;
-      public  int Minutes { get; set; } = 0;
+        [Required]
+        public int Price { get; set; } = 0;
+        [Required]
+        public int Minutes { get; set; } = 0;
+        [Required]
+        public DateTime Date { get; set; } 
 
-        public List<Ticket> Tickets { get; set; } = new();
+        //kanske ska vara i virtual?
+        public ICollection<Ticket> Tickets { get; set; } //list innan
     }
 }

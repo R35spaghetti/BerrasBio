@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-
+using BerrasBio.Models;
 namespace BerrasBio.Pages
 {
     public class IndexModel : PageModel
@@ -14,7 +14,8 @@ namespace BerrasBio.Pages
 
         public void OnGet()
         {
-
+            //hämtar
         }
+     
     }
 }

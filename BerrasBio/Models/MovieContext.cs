@@ -6,6 +6,8 @@ namespace BerrasBio.Models
     {
         public MovieContext(DbContextOptions<MovieContext> options) : base(options)
         { }
+        public MovieContext()
+        {}
         public DbSet<Movie> Movies { get; set; }
         public DbSet<Ticket> Tickets { get; set; }
     }
