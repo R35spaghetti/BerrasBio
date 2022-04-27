@@ -12,9 +12,8 @@ namespace BerrasBio.Models
         [Required]
         public int Minutes { get; set; } = 0;
         [Required]
-        public DateTime Date { get; set; } 
+        public DateTime Date { get; set; }
 
-        //kanske ska vara i virtual?
-        public ICollection<Ticket> Tickets { get; set; } //list innan
+        public virtual Ticket Tickets { get; set; }
     }
 }

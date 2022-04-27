@@ -10,7 +10,7 @@ namespace BerrasBio.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Movies",
+                name: "Movie",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -22,11 +22,11 @@ namespace BerrasBio.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Movies", x => x.Id);
+                    table.PrimaryKey("PK_Movie", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Tickets",
+                name: "Ticket",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -36,28 +36,29 @@ namespace BerrasBio.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Tickets", x => x.Id);
+                    table.PrimaryKey("PK_Ticket", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Tickets_Movies_MovieID",
+                        name: "FK_Ticket_Movie_MovieID",
                         column: x => x.MovieID,
-                        principalTable: "Movies",
+                        principalTable: "Movie",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Tickets_MovieID",
-                table: "Tickets",
-                column: "MovieID");
+                name: "IX_Ticket_MovieID",
+                table: "Ticket",
+                column: "MovieID",
+                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Tickets");
+                name: "Ticket");
 
             migrationBuilder.DropTable(
-                name: "Movies");
+                name: "Movie");
         }
     }
 }

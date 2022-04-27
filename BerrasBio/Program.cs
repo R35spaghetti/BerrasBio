@@ -1,12 +1,20 @@
 using BerrasBio.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using BerrasBio.Data;
 
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
-builder.Services.AddDbContext<MovieContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddDbContext<BerrasBioContext>(options =>
+
+
+    options.UseSqlServer(builder.Configuration.GetConnectionString("BerrasBioContext") ?? throw new InvalidOperationException("Connection string 'BerrasBioContext' not found.")));
+
+
 var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())

@@ -1,0 +1,35 @@
+﻿@page
+@model BerrasBio.Pages.CartModel
+@{
+}
+<div>
+    <h4>Var denna film som du ville beställa?</h4>
+    <hr />
+    <dl class="row-cols-lg-5">
+        <dt class="col-lg-2">
+            @Html.DisplayNameFor(model => model.Movie.Name)
+        </dt>
+        <dd class="col-lg-10">
+            @Html.DisplayFor(model => model.Movie.Name)
+        </dd>
+        <dt class="col-lg-2">
+            @Html.DisplayNameFor(model => model.Movie.Price)
+        </dt>
+        <dd class="col-lg-10">
+            @Html.DisplayFor(model => model.Movie.Price)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Movie.Minutes)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Movie.Minutes)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Movie.Date)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Movie.Date)
+        </dd>
+    </dl>
+</div>
+    <a asp-page="/Index">Return</a>
