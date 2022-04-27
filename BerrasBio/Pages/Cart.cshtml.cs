@@ -3,6 +3,7 @@ using BerrasBio.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace BerrasBio.Pages
 {
@@ -13,7 +14,10 @@ namespace BerrasBio.Pages
         {
             _context = context;
         }
-        public IQueryable<Ticket>? TicketsInCart { get; set; }
+        public SelectList TicketOptions { get; set; }
+        
+        //[BindProperty]
+        //public Ticket TicketsInCart { get; set; }
         public Movie Movie { get; set; }
         public double Total { get; set; }
 
@@ -27,6 +31,7 @@ namespace BerrasBio.Pages
         {
             if (id == null)
             {
+                
                 return NotFound();
             }
 
@@ -40,6 +45,11 @@ namespace BerrasBio.Pages
         }
             public void OnGet()
         {
+            //Tar siffran från antal tickets
+            var number = Request.Form["number"];
+
+            //TODO: ta bort
+            TicketOptions = new SelectList(_context.Ticket, nameof(Ticket.Amount));
         }
     }
 }
