@@ -2,6 +2,7 @@
 @model BerrasBio.Pages.CartModel
 @{
     var priceOfTickets = Model.Movie.Price;
+    var ticketBuyingLimit = 12;
 }
 
 
@@ -50,16 +51,18 @@
  <h5>Antal biljetter</h5>
 
 <form method="post">
- <input type="number" name="number" />
+  <select type="number" name="number">
+      @for(var i=1; i<= @ticketBuyingLimit; i++)
+      { <option value=@i>@i</option>}
 
 <div class=form-group> 
-    <span asp-validation-for="Tickets.Amount"class="text-danger"/>
 </div>
-    <br />
-  
+   
          <div>
         <input type="submit" class="btn btn-primary" style="margin-block-end"/>
         </div>
+           </select>
+
  </form>
 
 
