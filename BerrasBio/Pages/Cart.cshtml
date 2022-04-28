@@ -1,8 +1,12 @@
 ﻿@page
 @model BerrasBio.Pages.CartModel
 @{
+    var priceOfTickets = Model.Movie.Price;
 }
-<div>
+
+
+
+<div align="justify">
     <h4>Var denna film som du ville beställa?</h4>
     <hr />
     <dl class="row-cols-lg-5">
@@ -35,15 +39,29 @@
    
 </div>
 
-<h5>Antal biljetter</h5>
+
+ <div class="col-sm-2">
+     <p><strong>Prislista</strong></p>
+ @for(var i = 1; i <= 12; i++)
+    {<p> @i biljett(er): @(priceOfTickets*i)KR</p>}
+</div>
+
+
+ <h5>Antal biljetter</h5>
 
 <form method="post">
- <input type="number" name="number"/>
-<div class=form-group> 
+ <input type="number" name="number" />
 
-<span asp-validation-for="Tickets.Amount"class="text-danger"/>
+<div class=form-group> 
+    <span asp-validation-for="Tickets.Amount"class="text-danger"/>
 </div>
-    <input type="submit" class="btn btn-primary"/>
-</form>
+    <br />
+  
+         <div>
+        <input type="submit" class="btn btn-primary" style="margin-block-end"/>
+        </div>
+ </form>
+
 
     <a asp-page="/Index">Return</a>
+ 

@@ -52,7 +52,9 @@
                 @Html.DisplayFor(modelItem => item.Movie.Date)
             </td>
             
-              <td>
+
+
+                         <td>
                         @if (item.Amount > 0)
                         {
                         <a asp-page="/Cart" asp-page-handler="BuyTickets" asp-route-id="@item.MovieID">Order tickets</a>
