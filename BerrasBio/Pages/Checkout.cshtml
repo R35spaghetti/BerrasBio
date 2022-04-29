@@ -1,10 +1,11 @@
 ﻿@page
 @model BerrasBio.Pages.CheckoutModel
 @{
-   
+    Random randomNumber = new Random();
+    int reciept = randomNumber.Next(100000, 999999);
 }
 <div>
-    <h4>Slutgiltig beställning</h4>
+    <h1>Slutgiltig beställning</h1>
     <hr />
-    <p>Ditt ordernummer är: X</p>
+    <p>Ditt ordernummer är: @reciept</p>
 </div>
