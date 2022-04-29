@@ -26,3 +26,6 @@ h1{
     text-transform:uppercase;
     border-bottom: 1px solid #57b1dc;
 }
+NoTickets {
+    color: red;
+}
