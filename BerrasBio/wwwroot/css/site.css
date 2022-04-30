@@ -26,7 +26,19 @@ h1{
     text-transform:uppercase;
     border-bottom: 1px solid #57b1dc;
 }
-NoTickets {
+.NoTickets {
     background: red;
 
+}
+#Pricelist {
+    vertical-align: top;
+    text-align: center;
+    margin: auto;
+    border: 1px solid black;
+    padding: 50px 75px 100px 125px;
+}
+#tableAboutMovie {
+    text-align:left;
+   border: 1px solid black;
+   padding: 25px 50px 75px 100px
 }

@@ -11,8 +11,27 @@
     <h1>Var det denna film som du ville beställa?</h1>
     <br />
         <a asp-page="/Index">Gå tillbaka</a>
-
+</div>
     <hr />
+
+ <h5>Antal biljetter</h5>
+
+
+
+<form method="post">
+  <select type="number" name="number">
+      @for(var i=1; i<= @ticketBuyingLimit; i++)
+      { <option value=@i>@i</option>}
+
+    
+        <input type="submit" class="btn btn-primary" value="KÖP" style=" writing-mode: horizontal-tb;"/>
+
+           </select>
+ </form>
+
+
+<div id=tableAboutMovie>
+
     <dl class="row-cols-lg-5">
         <dt class="col-lg-2">
             @Html.DisplayNameFor(model => model.Movie.Name)
@@ -44,29 +63,15 @@
 </div>
 
 
- <div class="col-sm-2">
+          <div id="Pricelist">
      <p><strong>Prislista</strong></p>
  @for(var i = 1; i <= 12; i++)
     {<p> @i biljett(er): @(priceOfTickets*i)KR</p>}
 </div>
 
 
- <h5>Antal biljetter</h5>
 
-<form method="post">
-  <select type="number" name="number">
-      @for(var i=1; i<= @ticketBuyingLimit; i++)
-      { <option value=@i>@i</option>}
 
-<div class=form-group> 
-</div>
-   
-         <div>
-        <input type="submit" class="btn btn-primary" style="margin-block-end"/>
-        </div>
-           </select>
-
- </form>
 
 
  

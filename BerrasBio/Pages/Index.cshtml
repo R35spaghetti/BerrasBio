@@ -6,7 +6,6 @@
 }
 
 <h1>Current Movies</h1>
-
 <table class="table">
         
   
@@ -52,19 +51,19 @@
             </td>
             
 
-
                          <td>
-                       <div class="NoTickets">
 
                         @if (item.Amount > 0)
                         {
                         <a asp-page="/Cart" asp-page-handler="BuyTickets" asp-route-id="@item.MovieID">Order tickets</a>
                     }
                     else
-                    {
+                    {      <div class="NoTickets">
+
                         <p><strong>SLUTSÅLT</strong></p>
+                             </div>
+
                     }
-                  </div>
 
                 </td>
             
@@ -72,4 +71,4 @@
 }
     </tbody>
 </table>
-
+ 
