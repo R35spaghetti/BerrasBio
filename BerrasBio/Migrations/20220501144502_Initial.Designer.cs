@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BerrasBio.Migrations
 {
     [DbContext(typeof(BerrasBioContext))]
-    [Migration("20220501132540_Initial")]
+    [Migration("20220501144502_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -84,13 +84,21 @@ namespace BerrasBio.Migrations
                     b.Property<int>("Amount")
                         .HasColumnType("int");
 
-                    b.Property<int>("MovieID")
+                    b.Property<int?>("MovieID")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("MovieTheaterID")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("MovieID")
-                        .IsUnique();
+                        .IsUnique()
+                        .HasFilter("[MovieID] IS NOT NULL");
+
+                    b.HasIndex("MovieTheaterID")
+                        .IsUnique()
+                        .HasFilter("[MovieTheaterID] IS NOT NULL");
 
                     b.ToTable("Ticket");
                 });
@@ -110,11 +118,15 @@ namespace BerrasBio.Migrations
                 {
                     b.HasOne("BerrasBio.Models.Movie", "Movie")
                         .WithOne("Tickets")
-                        .HasForeignKey("BerrasBio.Models.Ticket", "MovieID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("BerrasBio.Models.Ticket", "MovieID");
+
+                    b.HasOne("BerrasBio.Models.MovieTheater", "MovieTheater")
+                        .WithOne("Ticket")
+                        .HasForeignKey("BerrasBio.Models.Ticket", "MovieTheaterID");
 
                     b.Navigation("Movie");
+
+                    b.Navigation("MovieTheater");
                 });
 
             modelBuilder.Entity("BerrasBio.Models.Movie", b =>
@@ -124,6 +136,11 @@ namespace BerrasBio.Migrations
 
                     b.Navigation("Tickets")
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("BerrasBio.Models.MovieTheater", b =>
+                {
+                    b.Navigation("Ticket");
                 });
 #pragma warning restore 612, 618
         }

@@ -52,7 +52,8 @@ namespace BerrasBio.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Amount = table.Column<int>(type: "int", nullable: false),
-                    MovieID = table.Column<int>(type: "int", nullable: false)
+                    MovieID = table.Column<int>(type: "int", nullable: true),
+                    MovieTheaterID = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -61,8 +62,12 @@ namespace BerrasBio.Migrations
                         name: "FK_Ticket_Movie_MovieID",
                         column: x => x.MovieID,
                         principalTable: "Movie",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Ticket_MovieTheater_MovieTheaterID",
+                        column: x => x.MovieTheaterID,
+                        principalTable: "MovieTheater",
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(
@@ -75,16 +80,24 @@ namespace BerrasBio.Migrations
                 name: "IX_Ticket_MovieID",
                 table: "Ticket",
                 column: "MovieID",
-                unique: true);
+                unique: true,
+                filter: "[MovieID] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Ticket_MovieTheaterID",
+                table: "Ticket",
+                column: "MovieTheaterID",
+                unique: true,
+                filter: "[MovieTheaterID] IS NOT NULL");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "MovieTheater");
+                name: "Ticket");
 
             migrationBuilder.DropTable(
-                name: "Ticket");
+                name: "MovieTheater");
 
             migrationBuilder.DropTable(
                 name: "Movie");

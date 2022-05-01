@@ -13,9 +13,11 @@ namespace BerrasBio.Models
         public int Amount { get; set; }
         
         public Movie? Movie { get; set; }
+        public MovieTheater? MovieTheater { get; set; }
 
-        [Required]
-        public int MovieID { get; set; }
-       
+        
+        public int? MovieID { get; set; }
+        public int? MovieTheaterID { get; set; }
+
     }
 }

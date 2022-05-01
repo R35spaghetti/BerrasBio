@@ -37,6 +37,10 @@
                 
                 </a>
             </th>
+            <th>
+           @Html.DisplayNameFor(m=>m.Theater[0].Room)
+
+            </th>
        
         </tr>
     </thead>
@@ -59,7 +63,9 @@
                 @Html.DisplayFor(modelItem => item.Movie.Date)
             </td>
             
-
+            <td>
+                @Html.DisplayFor(modelItem => item.MovieTheater.Room)
+            </td>
                          <td>
 
                         @if (item.Amount > 0)

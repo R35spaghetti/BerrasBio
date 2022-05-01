@@ -9,10 +9,10 @@ namespace BerrasBio.Models
     {
         public int Id { get; set; }
         public string Room { get; set; } = string.Empty;
-        [Required]
+        
         public Movie? Movie { get; set; }
-        [Required]
+        public Ticket? Ticket { get; set; }
+        
         public int MovieID { get; set; }
-
     }
 }

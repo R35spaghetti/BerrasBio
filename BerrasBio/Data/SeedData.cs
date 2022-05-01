@@ -23,13 +23,8 @@ namespace BerrasBio.Models
                 context.Movie.AddRange(movies);
                 context.SaveChanges();
 
-                var tickets = new Ticket[]
-                {
-                new Ticket{MovieID =1, Amount =49 },
-                new Ticket {MovieID =2, Amount =100},
-                new Ticket {MovieID =3, Amount =0}
+               
 
-                };
                 var movieTheater = new MovieTheater[]
                 {
                     new MovieTheater{Room="A", MovieID=1},
@@ -38,6 +33,15 @@ namespace BerrasBio.Models
 
 
                 };
+                context.MovieTheater.AddRange(movieTheater);
+                context.SaveChanges();
+                var tickets = new Ticket[]
+               {
+                new Ticket{MovieID =1, Amount =49, MovieTheaterID=1},
+                new Ticket {MovieID =2, Amount =100, MovieTheaterID=2},
+                new Ticket {MovieID =3, Amount =0, MovieTheaterID=3}
+
+               };
                 context.Ticket.AddRange(tickets);
                 context.SaveChanges();
             }

@@ -21,11 +21,8 @@ namespace BerrasBio.Pages.ShowAllMovies
         [BindProperty]
         public Movie Movie { get; set; }
         public IList<Ticket> Ticket { get;set; }
-
-        //public async Task OnGetAsync()
-        //{
-        
-        //}
+        public  IList<MovieTheater> Theater { get; set; }
+      
         public string DateSort { get; set; }
         public string TicketsLeftSort { get; set; }
        
@@ -35,8 +32,8 @@ namespace BerrasBio.Pages.ShowAllMovies
         {
 
 
-            DateSort = sortOrder == "Date" ? "date_Movie" : "Date";
-            TicketsLeftSort = sortOrder == "Amount" ? "Amount_Left" : "Amount";
+            DateSort = sortOrder == "Date" ? "date_desc" : "Date";
+            TicketsLeftSort = sortOrder == "Amount" ? "Amount_desc" : "Amount";
 
 
             IQueryable<Ticket> TicketsIQ = from x in _context.Ticket select x;
@@ -49,7 +46,7 @@ namespace BerrasBio.Pages.ShowAllMovies
                     TicketsIQ = TicketsIQ.OrderBy(x => x.Movie.Date);
 
                     break;
-                case "date_Movie":
+                case "date_desc":
                     TicketsIQ = TicketsIQ.OrderByDescending(x=>x.Movie.Date);
                     break;
                 case "Amount":
@@ -57,14 +54,14 @@ namespace BerrasBio.Pages.ShowAllMovies
 
                     break;
 
-                case "Amount_Left":
+                case "Amount_desc":
                     TicketsIQ = TicketsIQ.OrderByDescending(x => x.Amount);
 
                     break;
             }
-            Tickets = await  TicketsIQ.AsNoTracking().Include(t=>t.Movie).ToListAsync();
+            Tickets = await  TicketsIQ.AsNoTracking().Include(t=>t.Movie).Include(t=>t.MovieTheater).ToListAsync();
             Ticket = await _context.Ticket
-             .Include(t => t.Movie).ToListAsync();
+             .Include(t => t.Movie).Include(t=>t.MovieTheater).ToListAsync();
         }
     }
 }
