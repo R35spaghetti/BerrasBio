@@ -13,8 +13,13 @@
         <thead>
 
         <tr>
+            
+         
             <th>
-                @Html.DisplayNameFor(model => model.Ticket[0].Amount)
+                       <a asp-page="./Index" asp-route-sortOrder="@Model.TicketsLeftSort">
+                    @Html.DisplayNameFor(model=>model.Ticket[0].Amount)
+
+                </a>
             </th>
           
             <th>
@@ -27,12 +32,16 @@
                 @Html.DisplayNameFor(m=>m.Ticket[0].Movie.Minutes)
             </th>
               <th>
-                @Html.DisplayNameFor(m=>m.Ticket[0].Movie.Date)
+                   <a asp-page="./Index" asp-route-sortOrder="@Model.DateSort">
+                @Html.DisplayNameFor(model=>model.Ticket[0].Movie.Date)    
+                
+                </a>
             </th>
+       
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.Ticket) {
+@foreach (var item in Model.Tickets) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Amount)
