@@ -65,6 +65,6 @@ namespace BerrasBio.Pages.ShowAllMovies
         }
     }
 }
-/*TODO: två salonger
-interfaces
+/*TODO:interfaces
+ * validering för bokade biljetter
  */

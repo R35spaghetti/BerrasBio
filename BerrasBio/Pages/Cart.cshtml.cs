@@ -48,48 +48,62 @@ namespace BerrasBio.Pages
         {
            
         }
+        public bool CheckTicketsLeft(int tickets, int id, bool flag)
+        {
 
-        ////Id tappas när det blir asp-page-handler="AsyncCalculate"
-        //public async Task OnPost(int id)
+            var amountOfTickets = _context.Ticket
+                .Where(m => m.Id == id)
+                .Select(m => m.Amount)
+                .First();
+            var possibleTicketValue = amountOfTickets - tickets;
+            if(possibleTicketValue < 0)
+            {
+                flag = true;
+            }
+            else
+            {
+            }
+            return flag;
 
-        //{
-        //    //Beräkna kostnaden av biljetter
-        //    var number = Request.Form["number"];
-           
-        //    int number2 = int.Parse(number);
-     
-
-        //    //Räknar ut totala priset
-        //    var priceOnMovie =  _context.Movie
-        //        .Where(m => m.Id == id)
-        //         .Select(x => x.Price)
-        //        .First();
-        //    TotalCost = priceOnMovie * number2;
-        //    CurrentTickets = number2;
-        
-
-        //}
+        }
 
         public async Task<IActionResult> OnPostAsync(int id)
 
         {
+            bool flag=false;
             //Reducerar antalet biljetter
             var number = Request.Form["number"];
             var currentTickets = _context.Ticket
                 .Where(m => m.Id == id)
                 .Select(x => x.Amount)
                 .First();
-            int number2 = int.Parse(number);
-            var newTicketValue = currentTickets - number2;
-            Tickets = await _context.Ticket
-              .Include(t => t.Movie).FirstOrDefaultAsync(m => m.Id == id);
-            Tickets.Amount = newTicketValue;
-            CurrentTickets = number2;
+            int AmountToBuy = int.Parse(number);
 
-            //Skickar det nya värdet till databasen
-            _context.Attach(Tickets).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
-            return RedirectToPage("/Checkout");
+
+           flag = CheckTicketsLeft(AmountToBuy, id, flag);
+            if (flag == true)
+            {
+            }
+            else
+            {
+
+                var newTicketValue = currentTickets - AmountToBuy;
+
+
+
+                Tickets = await _context.Ticket
+                  .Include(t => t.Movie).FirstOrDefaultAsync(m => m.Id == id);
+                Tickets.Amount = newTicketValue;
+                CurrentTickets = AmountToBuy;
+
+                //Skickar det nya värdet till databasen
+                _context.Attach(Tickets).State = EntityState.Modified;
+                await _context.SaveChangesAsync();
+                return RedirectToPage("/Checkout");
+
+            }
+           return RedirectToPage("/Index");
+
         }
     }
 }

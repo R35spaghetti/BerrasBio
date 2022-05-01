@@ -37,7 +37,7 @@ namespace BerrasBio.Models
                 context.SaveChanges();
                 var tickets = new Ticket[]
                {
-                new Ticket{MovieID =1, Amount =49, MovieTheaterID=1},
+                new Ticket{MovieID =1, Amount =11, MovieTheaterID=1},
                 new Ticket {MovieID =2, Amount =100, MovieTheaterID=2},
                 new Ticket {MovieID =3, Amount =0, MovieTheaterID=3}
 
