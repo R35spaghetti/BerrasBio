@@ -69,6 +69,5 @@ namespace BerrasBio.Pages.ShowAllMovies
     }
 }
 /*TODO: två salonger
-sortera på visningstid och platser kvar
 interfaces
  */
