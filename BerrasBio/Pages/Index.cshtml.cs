@@ -18,8 +18,7 @@ namespace BerrasBio.Pages.ShowAllMovies
         {
             _context = context;
         }
-        [BindProperty]
-        public Movie Movie { get; set; }
+     
         public IList<Ticket> Ticket { get;set; }
         public  IList<MovieTheater> Theater { get; set; }
       

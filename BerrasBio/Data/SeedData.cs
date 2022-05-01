@@ -20,8 +20,8 @@ namespace BerrasBio.Models
                     new Movie{Name = "Den där", Minutes=50, Price = 20, Date= new DateTime(2022,04,30,10,30,45), },
                           new Movie{Name = "Populär film", Minutes=50, Price = 60, Date= new DateTime(2022,04,30,12,30,45), },
                             new Movie{Name = "Glen i Stockholm", Minutes = 60, Price = 56, Date= new DateTime(2022,04,30,13,30,00) },
-                    new Movie{Name = "Ännu en långfilm", Minutes=50, Price = 35, Date= new DateTime(2022,04,30,14,10,00), },
-                          new Movie{Name = "En Kortfilm", Minutes=20, Price = 10, Date= new DateTime(2022,04,30,14,30,00), }
+                    new Movie{Name = "Ännu en långfilm", Minutes=50, Price = 35, Date= new DateTime(2022,04,30,15,10,00), },
+                          new Movie{Name = "En Kortfilm", Minutes=20, Price = 10, Date= new DateTime(2022,04,30,16,30,00), }
                 };
                 context.Movie.AddRange(movies);
                 context.SaveChanges();

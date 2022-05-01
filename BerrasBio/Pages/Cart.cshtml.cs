@@ -16,7 +16,6 @@ namespace BerrasBio.Pages
         }
         public SelectList TicketOptions { get; set; }
 
-        //TODO antingen få välja biljetter samtidigt som du väljer film men hur skickar man in i det i databasen?
         public Movie Movie { get; set; }
         public Ticket Tickets { get; set; }
 
