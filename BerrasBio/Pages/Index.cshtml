@@ -2,10 +2,10 @@
 @model BerrasBio.Pages.ShowAllMovies.CurrentMoviesModel
 
 @{
-    ViewData["Title"] = "Current Movies";
+    ViewData["Title"] = "Berras Bio";
 }
 
-<h1>Current Movies</h1>
+<h1>Berras Bio</h1>
 <table class="table">
         
   
@@ -70,7 +70,7 @@
 
                         @if (item.Amount > 0)
                         {
-                        <a asp-page="/Cart" asp-page-handler="BuyTickets" asp-route-id="@item.MovieID">Order tickets</a>
+                        <a asp-page="/Cart" asp-page-handler="BuyTickets" asp-route-id="@item.MovieID">Beställ biljetter</a>
                     }
                     else
                     {      <div class="NoTickets">

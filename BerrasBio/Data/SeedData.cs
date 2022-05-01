@@ -44,11 +44,11 @@ namespace BerrasBio.Models
                 var tickets = new Ticket[]
                {
                 new Ticket{MovieID =1, Amount =11, MovieTheaterID=1},
-                new Ticket {MovieID =2, Amount =100, MovieTheaterID=2},
+                new Ticket {MovieID =2, Amount =30, MovieTheaterID=2},
                 new Ticket {MovieID =3, Amount =0, MovieTheaterID=3},
                     new Ticket{MovieID =4, Amount =50, MovieTheaterID=4},
-                new Ticket {MovieID =5, Amount =100, MovieTheaterID=5},
-                new Ticket {MovieID =6, Amount =50, MovieTheaterID=6}
+                new Ticket {MovieID =5, Amount =40, MovieTheaterID=5},
+                new Ticket {MovieID =6, Amount =100, MovieTheaterID=6}
 
                };
                 context.Ticket.AddRange(tickets);
