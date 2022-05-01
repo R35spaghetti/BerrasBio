@@ -14,12 +14,10 @@ namespace BerrasBio.Pages
         {
             _context = context;
         }
-        public SelectList TicketOptions { get; set; }
 
         public Movie Movie { get; set; }
         public Ticket Tickets { get; set; }
 
-        public double TotalCost { get; set; }
         public int CurrentTickets { get; set; }
 
 
