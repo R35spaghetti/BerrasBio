@@ -26,6 +26,26 @@ namespace BerrasBio.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "MovieTheater",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Room = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    MovieID = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MovieTheater", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_MovieTheater_Movie_MovieID",
+                        column: x => x.MovieID,
+                        principalTable: "Movie",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Ticket",
                 columns: table => new
                 {
@@ -46,6 +66,12 @@ namespace BerrasBio.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_MovieTheater_MovieID",
+                table: "MovieTheater",
+                column: "MovieID",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Ticket_MovieID",
                 table: "Ticket",
                 column: "MovieID",
@@ -54,6 +80,9 @@ namespace BerrasBio.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "MovieTheater");
+
             migrationBuilder.DropTable(
                 name: "Ticket");
 

@@ -22,5 +22,6 @@ namespace BerrasBio.Data
         public DbSet<BerrasBio.Models.Movie> Movie { get; set; }
 
         public DbSet<BerrasBio.Models.Ticket> Ticket { get; set; }
+        public DbSet<BerrasBio.Models.MovieTheater> MovieTheater { get; set; }
     }
 }

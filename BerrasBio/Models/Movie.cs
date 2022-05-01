@@ -15,5 +15,7 @@ namespace BerrasBio.Models
         public DateTime Date { get; set; }
 
         public virtual Ticket Tickets { get; set; }
+        public virtual MovieTheater Theaters { get; set; }
+       
     }
 }

@@ -9,13 +9,13 @@ namespace BerrasBio.Models
         public int Id { get; set; }
         [Required]
         [DisplayName("Amount of tickets")]
-        [Range(0,50)]
+        [Range(0,100)]
         public int Amount { get; set; }
         
-        [BindProperty]
         public Movie? Movie { get; set; }
+
         [Required]
         public int MovieID { get; set; }
-    
+       
     }
 }
