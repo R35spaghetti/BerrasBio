@@ -102,7 +102,7 @@ namespace BerrasBio.Pages
                 return RedirectToPage("/Checkout");
 
             }
-           return RedirectToPage("/Index");
+           return RedirectToPage("/ErrorTicketInput");
 
         }
     }
