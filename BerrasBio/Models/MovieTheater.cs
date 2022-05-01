@@ -8,6 +8,7 @@ namespace BerrasBio.Models
 
     {
         public int Id { get; set; }
+        [DisplayName("Salong")]
         public string Room { get; set; } = string.Empty;
         
         public Movie? Movie { get; set; }

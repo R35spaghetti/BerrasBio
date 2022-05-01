@@ -1,14 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BerrasBio.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace BerrasBio.Models
 {
-    public class Ticket
+    public class Ticket : ITicket
     {
         public int Id { get; set; }
         [Required]
-        [DisplayName("Amount of tickets")]
+        [DisplayName("Biljetter")]
         [Range(0,100)]
         public int Amount { get; set; }
         
